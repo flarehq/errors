@@ -1,4 +1,4 @@
-module github.com/ojizero/errors
+module github.com/flarehq/errors
 
 go 1.19
 

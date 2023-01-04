@@ -5,12 +5,12 @@ already versatile Go standard library.
 
 ## Usage
 
-    go get github.com/ojizero/errors
+    go get github.com/flarehq/errors
 
-Now simply import and use `github.com/ojizero/errors` in places where you would normally use `error`
+Now simply import and use `github.com/flarehq/errors` in places where you would normally use `error`
 
 ```go
-import "github.com/ojizero/errors"
+import "github.com/flarehq/errors"
 
 // This is identical to a standard error except it holds more contextual info
 // such as the file and line that defined it, along with the ability to
