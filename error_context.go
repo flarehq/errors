@@ -7,7 +7,6 @@ import (
 
 // DetailedError builds an error message that is detailed if the provided error is
 // can be used to extract the additional details. Mainly useful for logging.
-//
 func DetailedError(err error) string {
 	msg := strings.Builder{}
 	if f, l, ok := FileAndLine(err); ok {
@@ -26,7 +25,6 @@ func DetailedError(err error) string {
 //
 // Returns a boolean as well to indicate if the error isn't of our
 // custom type or if our error doesn't contain the file and line.
-//
 func FileAndLine(err error) (string, int, bool) {
 	if err, ok := err.(contextualError); ok {
 		return err.file, err.line, err.file != ""
@@ -37,7 +35,6 @@ func FileAndLine(err error) (string, int, bool) {
 // With appends the given labels to the given error if the
 // error is of the custom type Error. Otherwise it returns
 // the given error as is.
-//
 func With(err error, tags ...string) error {
 	if err, ok := err.(interface{ With(...string) error }); ok {
 		return err.With(tags...)
@@ -47,7 +44,6 @@ func With(err error, tags ...string) error {
 
 // Labels returns the labels of the error if it is of our own custom type,
 // if any other error is passed it will return an empty list.
-//
 func Labels(err error) []string {
 	if err, ok := err.(interface{ Labels() []string }); ok {
 		return err.Labels()
@@ -57,7 +53,6 @@ func Labels(err error) []string {
 
 // LabeledBy checks if the given error is a our Error type
 // and if so checks if it contains the provided tag.
-//
 func LabeledBy(err error, label string) bool {
 	if e, ok := err.(interface{ LabeledBy(string) bool }); ok {
 		return e.LabeledBy(label)
@@ -67,7 +62,6 @@ func LabeledBy(err error, label string) bool {
 
 // LabeledByAny checks if the given error is a our Error type
 // and if so checks if it contains any of the provided tags.
-//
 func LabeledByAny(err error, labels ...string) bool {
 	if e, ok := err.(interface{ LabeledBy(string) bool }); ok {
 		for _, t := range labels {

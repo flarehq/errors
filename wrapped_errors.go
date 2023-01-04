@@ -4,7 +4,6 @@ package errors
 // and allows us to wrap multiple errors under one, each error
 // acts as if it is wrapped by the one before it and wraps
 // all errors after it.
-//
 type wrappedErrors struct{ errs []error }
 
 // Validate we implement Go's stdlib errors package useful interfaces.
@@ -25,7 +24,6 @@ var (
 // it is used to wrap the error as if you called
 // `err.Wrap(errs...)`. Otherwise a proxy
 // WrappedErrors error is created.
-//
 func Wrap(err error, errs ...error) error {
 	if len(errs) == 0 {
 		return err
@@ -62,7 +60,6 @@ func (w wrappedErrors) Wrap(errs ...error) error {
 // error of most importance.
 //
 // Other wrapped errors act as a chain of one error wrapping all the ones after it.
-//
 func (w wrappedErrors) Unwrap() error {
 	if len(w.errs) == 0 {
 		// This should be an impossible case were if reached it is an undefined state
